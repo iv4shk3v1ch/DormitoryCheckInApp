@@ -1,0 +1,56 @@
+select * from student;
+select * from dorms;
+select * from rooms;
+select* from typeroom;
+select* from status;
+select* from dormhistory;
+select count(*) from status where fullname ='Величко Евгений Николаевич' ;
+
+insert all 
+into typeroom (type,payment,id) values ('Свежий ремонт',3500,'1')
+into typeroom (type,payment,id) values ('Общажный стандарт',1500,'2')
+into typeroom (type,payment,id) values ('Тараканий рай',800,'3')
+select * from dual;
+
+insert all 
+into rooms (typeroom,roomnumber, fk_dorm) values ('Свежий ремонт','112','Общежитие №6')
+into rooms (typeroom,roomnumber, fk_dorm) values ('Свежий ремонт','148','Общежитие №6')
+into rooms (typeroom,roomnumber, fk_dorm) values ('Свежий ремонт','332','Общежитие №6')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Общажный стандарт','217','Общежитие №6')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Общажный стандарт','352','Общежитие №6')
+ into rooms (typeroom,roomnumber, fk_dorm) values ('Общажный стандарт','501','Общежитие №6')
+ into rooms (typeroom,roomnumber, fk_dorm) values ('Тараканий рай','107','Общежитие №6')
+ into rooms (typeroom,roomnumber, fk_dorm) values ('Тараканий рай','321','Общежитие №6')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Тараканий рай','357','Общежитие №6')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Свежий ремонт','451','Общежитие №14')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Свежий ремонт','452','Общежитие №14')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Свежий ремонт','178','Общежитие №14')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Общажный стандарт','533','Общежитие №14')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Общажный стандарт','408','Общежитие №14')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Общажный стандарт','166','Общежитие №14')
+into rooms (typeroom,roomnumber, fk_dorm) values ('Тараканий рай','258','Общежитие №14')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Тараканий рай','369','Общежитие №14')
+into rooms (typeroom,roomnumber, fk_dorm) values ('Тараканий рай','367','Общежитие №14')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Свежий ремонт','147','Общежитие №13')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Свежий ремонт','456','Общежитие №13')
+into rooms (typeroom,roomnumber, fk_dorm) values ('Свежий ремонт','387','Общежитие №13')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Общажный стандарт','489','Общежитие №13')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Общажный стандарт','551','Общежитие №13')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Общажный стандарт','225','Общежитие №13')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Тараканий рай','167','Общежитие №13')
+into rooms (typeroom,roomnumber, fk_dorm) values  ('Тараканий рай','202','Общежитие №13')
+into rooms (typeroom,roomnumber, fk_dorm) values ('Тараканий рай','246','Общежитие №13')
+select * from dual;
+
+Create SEQUENCE history_id_seq;
+
+CREATE TRIGGER history_bi
+BEFORE INSERT ON dormhistory
+FOR EACH ROW
+BEGIN
+  SELECT history_id_seq.nextval
+  INTO :new.id
+  FROM dual;
+END;
+
+drop TRIGGER student_bi;
